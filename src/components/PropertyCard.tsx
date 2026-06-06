@@ -3,7 +3,10 @@ import { motion } from "framer-motion";
 import type { Property } from "../data/properties";
 
 export function PropertyCard({ p, size = "md" }: { p: Property; size?: "sm" | "md" | "lg" }) {
-  const h = size === "lg" ? "h-[560px]" : size === "sm" ? "h-[320px]" : "h-[440px]";
+  const h =
+    size === "lg" ? "h-[400px] sm:h-[480px] md:h-[560px]" :
+    size === "sm" ? "h-[280px] sm:h-[320px]" :
+    "h-[340px] sm:h-[400px] md:h-[440px]";
   return (
     <Link to={`/properties/${p.slug}`} className="group block">
       <motion.div
