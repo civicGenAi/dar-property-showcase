@@ -28,33 +28,33 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section ref={heroRef} className="relative h-screen min-h-[720px] w-full overflow-hidden bg-[var(--emerald-deep)]">
+      <section ref={heroRef} className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-[var(--emerald-deep)] md:min-h-[720px]">
         <motion.div style={{ y }} className="absolute inset-0">
           <img src={hero} alt="Ocean-view villa at golden hour" className="h-[120%] w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[var(--emerald-deep)]/40 via-[var(--emerald-deep)]/30 to-[var(--emerald-deep)]/85" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[var(--emerald-deep)]/50 via-[var(--emerald-deep)]/35 to-[var(--emerald-deep)]/90" />
         </motion.div>
         <BackgroundSVG variant="coastline" className="opacity-50" />
 
-        <motion.div style={{ opacity }} className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-end px-6 pb-28 lg:px-12 lg:pb-32">
+        <motion.div style={{ opacity }} className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-end px-6 pb-20 sm:pb-28 lg:px-12 lg:pb-32">
           <Reveal>
             <p className="small-caps-label text-[var(--brass-soft)]">Dar es Salaam · Private advisory</p>
           </Reveal>
           <Reveal delay={0.1}>
-            <h1 className="mt-6 max-w-5xl font-display text-[44px] leading-[1.02] text-[var(--ivory)] sm:text-6xl md:text-7xl lg:text-[96px]">
+            <h1 className="mt-5 max-w-5xl font-display text-[40px] leading-[1.02] text-[var(--ivory)] sm:text-6xl md:text-7xl lg:text-[96px]">
               Homes for a higher <em className="text-[var(--brass-soft)] not-italic">standard</em> of living.
             </h1>
           </Reveal>
           <Reveal delay={0.2}>
-            <p className="mt-8 max-w-xl text-lg text-[var(--ivory)]/80 md:text-xl">
+            <p className="mt-6 max-w-xl text-base text-[var(--ivory)]/80 sm:mt-8 sm:text-lg md:text-xl">
               A curated collection of premium properties across Masaki, Mikocheni and Mbezi — quietly placed for clients who expect more.
             </p>
           </Reveal>
           <Reveal delay={0.3}>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link to="/properties" className="bg-[var(--ivory)] px-7 py-4 small-caps-label text-[var(--obsidian)] transition-transform hover:scale-[1.02]">
+            <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
+              <Link to="/properties" className="bg-[var(--ivory)] px-7 py-4 text-center small-caps-label text-[var(--obsidian)] transition-transform hover:scale-[1.02] active:scale-[0.99]">
                 Browse Properties
               </Link>
-              <Link to="/contact" className="border border-[var(--brass)] px-7 py-4 small-caps-label text-[var(--brass-soft)] transition-colors hover:bg-[var(--brass)]/10">
+              <Link to="/contact" className="border border-[var(--brass)] px-7 py-4 text-center small-caps-label text-[var(--brass-soft)] transition-colors hover:bg-[var(--brass)]/10 active:bg-[var(--brass)]/20">
                 Book a Viewing
               </Link>
             </div>
@@ -71,8 +71,9 @@ export default function Home() {
       </section>
 
       {/* INTRO STATEMENT */}
-      <section className="relative bg-[var(--ivory)] py-28 lg:py-40">
-        <div className="mx-auto max-w-4xl px-6 text-center lg:px-12">
+      <section className="relative overflow-hidden bg-[var(--ivory)] py-20 md:py-28 lg:py-40">
+        <BackgroundSVG variant="compass" className="opacity-60" />
+        <div className="relative mx-auto max-w-4xl px-6 text-center lg:px-12">
           <Reveal>
             <p className="small-caps-label text-[var(--brass)]">A private practice</p>
           </Reveal>
@@ -89,12 +90,20 @@ export default function Home() {
       </section>
 
       {/* STATS */}
-      <section className="border-y border-[var(--obsidian)]/10 bg-[var(--muted)] py-20">
-        <div className="mx-auto grid max-w-[1400px] gap-12 px-6 sm:grid-cols-2 lg:grid-cols-4 lg:px-12">
-          <StatCounter value={84} prefix="TZS " suffix="B+" label="Closed value" />
-          <StatCounter value={230} suffix="+" label="Homes placed" />
-          <StatCounter value={3} label="Premium neighborhoods" />
-          <StatCounter value={11} label="Years of practice" />
+      <section className="relative overflow-hidden border-y border-[var(--obsidian)]/10 bg-[var(--muted)] py-16 md:py-20">
+        <BackgroundSVG variant="signature" className="opacity-70" />
+        <div className="relative mx-auto max-w-[1400px] px-6 lg:px-12">
+          {/* mobile: 2x2 with brass cross divider · md+: 4 across */}
+          <div className="relative grid grid-cols-2 gap-y-10 gap-x-6 sm:gap-x-8 md:grid-cols-4 md:gap-x-12">
+            {/* center cross — mobile only */}
+            <span aria-hidden className="brass-hairline pointer-events-none absolute left-0 right-0 top-1/2 -translate-y-1/2 md:hidden" />
+            <span aria-hidden className="pointer-events-none absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-[var(--brass)] to-transparent opacity-50 md:hidden" />
+
+            <StatCounter value={84} prefix="TZS " suffix="B+" label="Closed value" align="left" />
+            <StatCounter value={230} suffix="+" label="Homes placed" align="right" />
+            <StatCounter value={3} label="Neighborhoods" align="left" />
+            <StatCounter value={11} label="Years of practice" align="right" />
+          </div>
         </div>
       </section>
 
@@ -154,8 +163,9 @@ export default function Home() {
       </section>
 
       {/* WHY */}
-      <section className="relative py-28 lg:py-40">
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+      <section className="relative overflow-hidden py-20 md:py-28 lg:py-40">
+        <BackgroundSVG variant="blueprint" className="opacity-50" />
+        <div className="relative mx-auto max-w-[1400px] px-6 lg:px-12">
           <SectionHeading eyebrow="Why work with her" title={<>A quieter way to <em className="italic text-[var(--brass)]">buy property</em>.</>} />
           <RevealStagger className="mt-16 grid gap-12 md:grid-cols-3">
             {[
